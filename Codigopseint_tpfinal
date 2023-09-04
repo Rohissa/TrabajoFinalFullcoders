@@ -1,0 +1,65 @@
+Algoritmo GestionInscripcionCursosIdiomas
+    // Declaración de variables
+    Dimension idiomas[5]
+    Dimension niveles[5] 
+    Definir opcionMenu, idiomaElegido, nivelElegido como Entero
+    Dimension inscripciones[5, 5] 
+	
+    // Inicialización de variables
+    Para i <- 1 Hasta 5 Hacer
+        Para j <- 1 Hasta 5 Hacer
+            inscripciones[i, j] <- Falso // no hay inscripciones al principio
+        Fin Para
+    Fin Para
+	
+    // Menú principal
+    Repetir
+        Escribir "Bienvenido al sistema de inscripción a cursos de idiomas"
+        Escribir "Seleccione una opción:"
+        Escribir "1. Inscribirse a un curso"
+        Escribir "2. Ver inscripciones"
+        Escribir "3. Salir"
+        Leer opcionMenu
+		
+        Segun opcionMenu Hacer
+            Caso 1:
+                // Inscripción a un curso
+                Mostrar "Elija el idioma: 1.Aleman, 2.Ingles, 3.Frances, 4.Italiano, 5.Chino"
+                Para i <- 1 Hasta 5 Hacer
+                    Mostrar i, ". ", idiomas[i]
+                Fin Para
+                Leer idiomaElegido
+				
+                Mostrar "Elija el nivel (del 1 al 5):"
+                Leer nivelElegido
+				
+                // Verificar disponibilidad y realizar la inscripción
+                Si inscripciones[idiomaElegido, nivelElegido] = Falso Entonces
+                    inscripciones[idiomaElegido, nivelElegido] <- Verdadero
+                    Mostrar "Inscripción exitosa en ", idiomas[idiomaElegido], " - ", niveles[nivelElegido]
+                Sino
+                    Mostrar "Este curso ya está completo. Por favor, elija otro."
+                Fin Si
+			
+		Caso 2:
+			// Ver inscripciones
+			Mostrar "Inscripciones realizadas:"
+			Para i <- 1 Hasta 5 Hacer
+				Para j <- 1 Hasta 5 Hacer
+					Si inscripciones[i, j] = Verdadero Entonces
+						Mostrar idiomas[i], " - ", niveles[j]
+					Fin Si
+				Fin Para
+			Fin Para
+		
+	Caso 3:
+		// Salir del programa
+		continuar <- Falso
+	
+De Otro Modo:
+	Mostrar "Opción no válida. Intente nuevamente."
+Fin Segun
+Hasta Que No continuar
+
+Mostrar "Gracias por usar el sistema de inscripción a cursos de idiomas."
+FinAlgoritmo
